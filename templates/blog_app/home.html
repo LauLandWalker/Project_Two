@@ -1,0 +1,25 @@
+{% extends 'blog_app/base.html' %}
+
+{% block title_block %}
+    Homepage
+{% endblock %}
+
+{% load django_markdown %}
+
+{% block body_block %}
+
+{% for blog_entry in blog_entries %}
+    <div>
+        <hr/>
+        <h2>{{ blog_entry.title }}</h2>
+        <p><span class="small">{{ blog_entry.created }}| Tagged under {{ blog_entry.tags.all|join:', ' }}</span></p>
+        <br/>
+        <p>{{ blog_entry.body|markdown }}</p>
+        <hr/>
+    </div>
+{% endfor %}
+
+
+
+
+{% endblock %}
